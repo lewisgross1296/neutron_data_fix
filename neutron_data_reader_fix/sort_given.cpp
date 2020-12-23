@@ -2,15 +2,14 @@
 #include <vector>
 #include <array>
 #include <map>
+#include <algorithm>
 
 
 
 int main(){
 
-  std::vector<int> d_nxs = {206450, 18040, 23603, 42, 30, 0, 0, 0, 0, 18, 40, 0, 0, 0, 0, 0};
-  // vector<int> d_jxs = {1, 0 , 118016 , 118058, 118100, 118142, 118184, 176941, 176972, 199042, 199072, 
-  //                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 206450, 200000, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
+  // Duplicates may be due to lack of angular photon distributions
+  // perhaps the XS is all zeros if it is isotropic data, need to investigate landp, andp and ldlwp, dlwp
 
   // TODO WHY ARE THERE DUPLICATES???
 
