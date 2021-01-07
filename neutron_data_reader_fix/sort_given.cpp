@@ -9,19 +9,16 @@
 int main(){
 
   // Duplicates may be due to lack of angular photon distributions
-  // perhaps the XS is all zeros if it is isotropic data, need to investigate landp, andp and ldlwp, dlwp
+  // perhaps the XSS is all zeros if it is isotropic data, need to investigate landp, andp and ldlwp, dlwp
 
-  // TODO WHY ARE THERE DUPLICATES???
+  // change to get nxs, jxs and xss using FRENSIE
 
 
-  std::vector<int> d_jxs = {1, 382591, 382914, 382962, 383010, 383058, 383106, 619790,
-   619836, 684809, 684854, 757533, 834051, 834084, 834117, 835405,
-   835438, 835438, 835471, 837478, 383196, 837481, 745853, 747702,
-   747717, 747759, 747765, 0, 0, 0, 0, 0};
-  // */
 
-/* 43099.710nc 
-  vector<int> d_jxs = { 1, 0, 268156, 268218, 268280, 268342, 268404, 380213,
+// 43099.710nc 
+  std::vector<int> d_nxs = { 729323, 43099, 53631, 62, 34, 201, 2, 0, 0, 43, 99, 0, 0, 0, 0, 0};
+
+  std::vector<int> d_jxs = { 1, 0, 268156, 268218, 268280, 268342, 268404, 380213,
    380248, 455081, 455115, 555798, 609429, 609630, 609831, 612009,
    612210, 612210, 612411, 661765, 0, 661820, 552494, 0, 
    0, 0, 0, 0, 0, 661821, 661823, 661825};
