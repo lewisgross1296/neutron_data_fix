@@ -112,6 +112,7 @@ int main(){
 
     } else {
       std::cout << "monotone check passed for block " << available_blocks[idx].second << std::endl; // can likely comment out in FRENSIE
+    }
   }
 
 
