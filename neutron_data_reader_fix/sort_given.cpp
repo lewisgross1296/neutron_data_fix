@@ -4,16 +4,12 @@
 #include <map>
 #include <algorithm>
 
-
-
 int main(){
 
   // Duplicates may be due to lack of angular photon distributions
   // perhaps the XSS is all zeros if it is isotropic data, need to investigate landp, andp and ldlwp, dlwp
 
   // change to get nxs, jxs and xss using FRENSIE
-
-
 
 // 43099.710nc 
   std::vector<int> d_nxs = { 729323, 43099, 53631, 62, 34, 201, 2, 0, 0, 43, 99, 0, 0, 0, 0, 0};
@@ -90,7 +86,7 @@ int main(){
   for(int block = 0 ; block < available_blocks.size() ; block++) {
     std::cout << "The location of block " << available_blocks[block].second << 
     " is "  << available_blocks[block].first << std::endl;
-  }
+  } // /*
 
   // sort pairs by first, seems to default to this with simple sort
   std::sort(available_blocks.begin(),available_blocks.end());
@@ -104,22 +100,23 @@ int main(){
     " is "  << available_blocks[block].first << std::endl;
   }
 
-  // suspected monotone order from looking at fissionable isotopes
-  std::vector<int> monotone_order = {esz,nu,mtr,lqr,tyr,lsig,sig,fis,landb,andb,ldlw,dlw,lunr,dnu,bdd,dnedl,
-                                dned,gpd,mtrp,lsigp,sigp,landp,andp,ldlwp,dlwp,yp,end};
-  
-  std::cout << std::endl;
-  // is the order the same as expected monotone order?
-  std::cout << "observed order , sorted order " << std::endl;
-  for(int block = 0 ; block < monotone_order.size() ; block ++) {
-  std::cout << monotone_order[block] << " , " ;
-    if(d_jxs[block]>=0) {
-      std::cout << available_blocks[block].second << std::endl;
-    } else { 
-      std::cout << "this isotope does not contain data for block " << block  << std::endl;
-    }
+  // monotone check
+  for(int idx = 0 ; idx < available_blocks.size()-1 ; idx++) {
+    // don't do check on last bc last block is end and it doesn't have a size
+    if(available_blocks[idx].first > available_blocks[idx+1].first ) {
+      // current block's location  happens after the next
+      // blocks are not sorted in monotone order
+      std::cout << "monotone check failed" << std::endl;
+      std::cout << "curr block "<< available_blocks[idx].second << " , jxs[block] = " << available_blocks[idx].first << std::endl;
+      std::cout << "next block "<< available_blocks[idx+1].second  <<  " , jxs[block+1] = "<< available_blocks[idx+1].first << std::endl;
+
+    } else {
+      std::cout << "monotone check passed for block " << available_blocks[idx].second << std::endl; // can likely comment out in FRENSIE
   }
 
+
+  std::cout << std::endl;
+  std::cout << "good to here"  << std::endl;
 
   // this map takes a block id key and returns value pair of the start and length corresponding to the block/key
   std::map<int, std::pair<int,int> > block_to_start_length_pair; // first parameter is the block's start, second parameter is the length of that block
@@ -140,7 +137,7 @@ int main(){
     std::cout  << "block id "  << it.first; // way to get enum to display name?
     auto pair = it.second;
     std::cout << " start: " << pair.first << " length: " << pair.second << std::endl;;
-  }
-  // */
+  } // */
+
   return 0;
 }
